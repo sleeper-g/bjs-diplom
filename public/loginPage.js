@@ -8,9 +8,7 @@ userForm.loginFormCallback = data => ( ApiConnector.login( {login:data.login, pa
         location.reload();
     }
     else {
-        userForm.loginErrorMessageBox.style = ""
-        userForm.loginErrorMessageBox.textContent = response.error
-        throw new Error(response.error)
+        userForm.setLoginErrorMessage(response.error)
     }
 }
 ) );
@@ -21,8 +19,6 @@ userForm.registerFormCallback = data => ( ApiConnector.register( {login:data.log
         location.reload();
     }
     else {
-        userForm.registerErrorMessageBox.style = ""
-        userForm.registerErrorMessageBox.textContent = response.error
-        throw new Error(response.error)
+        userForm.setRegisterErrorMessage(response.error)
     }
 } ) );

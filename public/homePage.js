@@ -25,7 +25,7 @@ function stock(){
 };
 
 stock()
-let timerId = setInterval( stock(), 60000)
+let timerId = setInterval( stock, 60000)
 
 const moneyForm = new MoneyManager()
 
@@ -33,7 +33,7 @@ moneyForm.addMoneyCallback = ({...data}) => {
     ApiConnector.addMoney( { currency: data.currency, amount: data.amount }, (state) => {
         if (state.success){
             ProfileWidget.showProfile(state.data)
-            moneyForm.setMessage(state.success, "Success")
+            moneyForm.setMessage(state.success, "Выполнено успешно")
         }
         else {
             moneyForm.setMessage(state.success, state.error)
@@ -45,7 +45,7 @@ moneyForm.conversionMoneyCallback = ({...data}) => {
     ApiConnector.convertMoney({ fromCurrency: data.fromCurrency, targetCurrency: data.targetCurrency, fromAmount: data.fromAmount }, (state) => {
         if (state.success){
             ProfileWidget.showProfile(state.data)
-            moneyForm.setMessage(state.success, "Success")
+            moneyForm.setMessage(state.success, "Выполнено успешно")
         }
         else {
             moneyForm.setMessage(state.success, state.error)
@@ -57,7 +57,7 @@ moneyForm.sendMoneyCallback = ({...data}) => {
     ApiConnector.transferMoney({to: data.to, currency: data.currency, amount: data.amount}, (state) => {
         if (state.success){
             ProfileWidget.showProfile(state.data)
-            moneyForm.setMessage(state.success, "Success")
+            moneyForm.setMessage(state.success, "Выполнено успешно")
         }
         else {
             moneyForm.setMessage(state.success, state.error)
@@ -82,7 +82,7 @@ favourit.addUserCallback = ({...data}) => {
             favourit.clearTable()
             favourit.fillTable(state.data)
             moneyForm.updateUsersList(state.data)
-            moneyForm.setMessage(state.success, "Success")
+            moneyForm.setMessage(state.success, "Выполнено успешно")
         }
         else {
             favourit.setMessage(state.success, state.error)
@@ -96,7 +96,7 @@ favourit.removeUserCallback = (id) => {
             favourit.clearTable()
             favourit.fillTable(state.data)
             moneyForm.updateUsersList(state.data)
-            moneyForm.setMessage(state.success, "Success")
+            moneyForm.setMessage(state.success, "Выполнено успешно")
         }
         else {
             favourit.setMessage(state.success, state.error)
